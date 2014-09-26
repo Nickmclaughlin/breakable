@@ -1,19 +1,22 @@
 class UsersController < ApplicationController
-  def new
-    @user = User.new
+  def edit
+    @user = User.find(params[:id])
   end
 
-  def create
-    @user = User.new
-    if @user.save
-      flash[:notice] = "You have successfully posted your comment."
-      redirect_to users_path(@user)
+  def update
+    @user = User.find(params[:id])
+
+    if @user.update(user_params)
+      flash[:success] = "You have successfully updated your review."
+      redirect_to root_path
     else
-      render 'new'
+      render 'edit'
     end
   end
 
+  private
   def user_params
-    params.require(:user).permit(:body)
+    params.require(:user).permit(:sex, :first_name, :last_name, :username, :email, :profile_photo, :bio, :interests, :profession)
   end
+
 end

@@ -10,7 +10,13 @@
     <li><%= link_to "Home", root_path %></li>
       <% if current_user %>
         <li><%= link_to "sign out", destroy_user_session_path, method: :delete %></li>
-        <li><%= link_to "Create Profile", new_user_path %>
+        <% if current_user.bio == nil  %>
+          <li><%= link_to "Complete Profile", edit_user_path(current_user) %></li>
+        <% end %>
+        <% if current_user.bio != nil && current_user.interests != nil && current_user.profession != nil   %>
+          <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
+        <% end %>
+
       <% else %>
         <li><%= link_to "sign up", new_user_registration_path %></li>
         <li><%= link_to "sign in", new_user_session_path %></li>
