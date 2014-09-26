@@ -39,3 +39,22 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'devise'
+gem 'carrierwave'
+gem 'fog'
+gem 'foundation-rails'
+
+gem 'rails_12factor', group: :production
+
+group :development, :test do
+  gem 'valid_attribute'
+  gem 'shoulda-matchers'
+  gem 'pry-rails'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'factory_girl_rails'
+end
+
+group :development, :test do
+  gem 'dotenv-rails'
+end
