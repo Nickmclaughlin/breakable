@@ -1,0 +1,85 @@
+<img src=<%= @user.profile_photo %>><br>
+<% if @user.bio == nil %>
+  <h1>Welcome to the Breakable Community <%= @user.first_name %> <%= @user.last_name %>.</h1>
+  <p> Please start filling out your profile.  Remember this is an important step to making a connection so be thorough.</p>
+<% end %>
+
+<% if @user.bio == nil && @user.profession == nil  && @user.interests == nil %>
+  <%= form_for @user do |f| %>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited
+            your profile from being saved:</h2>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end%>
+
+  <p>
+    <%= f.label :sex %> <br>
+    <%= f.text_field :sex %>
+  </p>
+  <p>
+    <%= f.label :bio %> <br>
+    <%= f.text_area :bio %>
+  </p>
+
+  <p>
+    <%= f.label :profession %><br>
+    <%= f.text_field :profession %>
+  </p>
+
+  <p>
+    <%= f.label :interests %><br>
+    <%= f.text_area :interests %>
+  </p>
+
+
+  <%= f.submit 'Update Profile' %>
+
+  <% end %>
+<% end %>
+
+<% if @user.bio != nil %>
+  Welcome <%= @user.first_name %>
+  <%= form_for @user do |f| %>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited
+            your profile from being saved:</h2>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end%>
+
+  <p>
+    <%= f.label :sex %> <br>
+    <%= f.text_field :sex %>
+  </p>
+
+  <p>
+    <%= f.label :bio %> <br>
+    <%= f.text_area :bio %>
+  </p>
+
+  <p>
+    <%= f.label :profession %><br>
+    <%= f.text_field :profession %>
+  </p>
+
+  <p>
+    <%= f.label :interests %><br>
+    <%= f.text_area :interests %>
+  </p>
+
+
+  <%= f.submit 'Update Profile' %>
+
+  <% end %>
+<% end %>
