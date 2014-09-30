@@ -1,9 +1,10 @@
+<img src=<%= @user.profile_photo %>><br>
 <% if @user.bio == nil %>
   <h1>Welcome to the Breakable Community <%= @user.first_name %> <%= @user.last_name %>.</h1>
   <p> Please start filling out your profile.  Remember this is an important step to making a connection so be thorough.</p>
 <% end %>
 
-<% if @user && @user.bio == nil && @user.profession == nil  && @user.interests == nil %>
+<% if @user.bio == nil && @user.profession == nil  && @user.interests == nil %>
   <%= form_for @user do |f| %>
     <% if @user.errors.any? %>
         <div id="error_explanation">
