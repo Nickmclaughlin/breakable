@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   mount_uploader :profile_photo, ProfilePhotoUploader
 
+  has_many :posts
+
+  validates :sex, presence: true
+
 end
