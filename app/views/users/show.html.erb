@@ -1,7 +1,33 @@
 <img src=<%= @user.profile_photo %>><br>
 Active Last: <%= @user.last_sign_in_at.to_date %>
 
-<h1>Username: <%= @user.username %></h1><br>
+<h4>Username: <%= @user.username %></h4><br>
 Profession: <%= @user.profession %><br>
 Bio: <%= @user.bio %><br>
-Interests: <%= @user.interests %>
+Interests: <%= @user.interests %><br><br>
+
+Post on <%= @user.username %>'s wall<br><br>
+<%= form_for [@user, @post] do |f| %>
+  <p>
+    <%= f.label :subject %> <br>
+    <%= f.text_field :subject %>
+  </p>
+  <p>
+    <%= f.label :message %> <br>
+    <%= f.text_area :message %>
+  </p>
+
+  <%= f.submit 'Post Message' %>
+
+<% end %><br><br>
+
+
+
+Wall
+<br>
+
+<% @user.posts.each do |post| %>
+  <ul>
+    <li><%= post.message %> from <%= current_user.username %></li>
+  </ul>
+<% end %>

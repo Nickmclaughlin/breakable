@@ -1,4 +1,7 @@
-<img src=<%= @user.profile_photo %>><br>
+<% if @user.profile_photo != nil %>
+  <img src=<%= @user.profile_photo %>><br>
+<% end %>
+
 <% if @user.bio == nil %>
   <h1>Welcome to the Breakable Community <%= @user.first_name %> <%= @user.last_name %>.</h1>
   <p> Please start filling out your profile.  Remember this is an important step to making a connection so be thorough.</p>
@@ -19,8 +22,13 @@
     <% end%>
 
   <p>
+    <%= f.label :profile_photo %><br>
+    <%= f.file_field :profile_photo %>
+  </p>
+
+  <p>
     <%= f.label :sex %> <br>
-    <%= f.text_field :sex %>
+    <%= f.select :sex %>
   </p>
   <p>
     <%= f.label :bio %> <br>
@@ -60,7 +68,7 @@
 
   <p>
     <%= f.label :sex %> <br>
-    <%= f.text_field :sex %>
+    <%= f.select :sex, options_for_select(["Select One","Male", "Female"]) %>
   </p>
 
   <p>
