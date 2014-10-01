@@ -28,7 +28,7 @@
 
   <p>
     <%= f.label :sex %> <br>
-    <%= f.select :sex %>
+    <%= f.select :sex, options_for_select(["Select One","Male", "Female"]) %>
   </p>
   <p>
     <%= f.label :bio %> <br>
