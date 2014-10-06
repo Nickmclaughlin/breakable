@@ -9,4 +9,11 @@ class User < ActiveRecord::Base
 
   validates :sex, presence: true
 
+  def self.search(search)
+    if search.present?
+      where("username like ?", "%#{search}%")
+    else
+      self.all
+    end
+  end
 end

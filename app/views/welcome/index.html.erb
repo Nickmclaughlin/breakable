@@ -1,14 +1,21 @@
 <div class="row" style="margin-top: 0px;">
   <aside class="large-4 columns">
       <h1> List of Users </h1>
-      <ol>
+
+      <%= form_tag root_path, method: :get do %>
+        <%= text_field_tag :search, params[:search] %>
+        <%= fa_icon("search") %>
+      <% end %>
+
+
         <% @users.each do |user| %>
-          <li><img Height="50px" Width="50px" src=<%= user.profile_photo %>><%= link_to user.username, user_path(user) %><br><br></li>
+          <li><img Height="50px" Width="50px" src=<%= user.profile_photo %>>   <%= link_to user.username, user_path(user) %><br><br></li>
         <% end %>
-      </ol>
+
+
   </aside>
 
   <section class="large-8 columns">
-    <img src= "http://picbook.in/wp-content/uploads/2014/07/sunset_sky_by_koko-stock_.jpg" >
+    <img src="http://1.bp.blogspot.com/-nxPzvFS2dLw/T57Fq0L2QNI/AAAAAAAAAP8/oj8BwOQDl0s/s1600/Cirrus_sky_panorama.jpg" >
   </section>
 </div>
