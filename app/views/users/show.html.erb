@@ -3,15 +3,19 @@ Active Last: <%= @user.last_sign_in_at.to_date %>
 
 <h4>Username: <%= @user.username %></h4><br>
 Profession: <%= @user.profession %><br>
+Education: <%= @user.education %><br>
 Bio: <%= @user.bio %><br>
 Interests: <%= @user.interests %><br><br>
+City: <%= @user.city %><br>
+State: <%= @user.state %><br>
+Zip: <%= @user.zip %><br>
+Age: <%= @user.age %><br>
+First Name: <%= @user.first_name %><br>
+
+
 
 Post on <%= @user.username %>'s wall<br><br>
 <%= form_for [@user, @post] do |f| %>
-  <p>
-    <%= f.label :subject %> <br>
-    <%= f.text_field :subject %>
-  </p>
   <p>
     <%= f.label :message %> <br>
     <%= f.text_area :message %>
@@ -21,13 +25,8 @@ Post on <%= @user.username %>'s wall<br><br>
 
 <% end %><br><br>
 
-
-
-Wall
-<br>
-
-<% @user.posts.each do |post| %>
-  <ul>
-    <li><%= post.message %> from <%= current_user.username %></li>
-  </ul>
-<% end %>
+<ol>
+  <% @user.received_posts.each do |post| %>
+    <li><%= post.message %> posted by: <%= link_to post.poster.username, user_path(post.poster) %></li>
+  <% end %>
+</ol>

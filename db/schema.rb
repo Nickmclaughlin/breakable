@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(version: 20141006150127) do
 
   create_table "posts", force: true do |t|
-    t.integer  "user_id"
-    t.string   "subject"
+    t.integer  "poster_id",    null: false
+    t.integer  "recipient_id", null: false
     t.string   "message"
     t.datetime "created_at"
     t.datetime "updated_at"
