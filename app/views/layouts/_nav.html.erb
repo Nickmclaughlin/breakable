@@ -16,7 +16,7 @@
         <% if current_user.bio != nil && current_user.interests != nil && current_user.profession != nil   %>
           <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
           <li><%= link_to "Your Profile", user_path(current_user) %></li>
-          <li><img Height="30px" Width="37px" src=<%= current_user.profile_photo %>></li>
+          <li class="th"><img Height="35px" Width="37px" src=<%= current_user.profile_photo %>></li>
         <% end %>
         <!-- <li><img Height="30px" Width="37px" src=<%= current_user.profile_photo %>></li> -->
 

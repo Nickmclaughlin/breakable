@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :sent_posts, class_name: "Post", foreign_key: 'poster_id'
   has_many :received_posts, class_name: "Post", foreign_key: 'recipient_id'
+  has_many :photos
 
   validates :sex, presence: true
   validates :zip, presence: true

@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141006150127) do
+ActiveRecord::Schema.define(version: 20141006233145) do
+
+  create_table "photos", force: true do |t|
+    t.boolean  "profile_photo", default: false
+    t.string   "photo"
+    t.string   "description"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "posts", force: true do |t|
     t.integer  "poster_id",    null: false
