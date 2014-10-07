@@ -1,4 +1,8 @@
 <img src=<%= @user.profile_photo %>><br>
+<% if !@user.photos.empty? %>
+  <%= link_to 'More Photos', user_photo_path(@user, @user.photos) %> <br>
+<% end %>
+
 Active Last: <%= @user.last_sign_in_at.to_date %>
 
 <h4>Username: <%= @user.username %></h4><br>
@@ -13,7 +17,6 @@ Age: <%= @user.age %><br>
 First Name: <%= @user.first_name %><br>
 
 
-
 Post on <%= @user.username %>'s wall<br><br>
 <%= form_for [@user, @post] do |f| %>
   <p>
@@ -21,7 +24,7 @@ Post on <%= @user.username %>'s wall<br><br>
     <%= f.text_area :message %>
   </p>
 
-  <%= f.submit 'Post Message' %>
+  <%= f.submit 'Post Message', class: "button" %>
 
 <% end %><br><br>
 

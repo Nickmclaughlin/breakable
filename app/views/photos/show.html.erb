@@ -1,0 +1,5 @@
+<div class= "user-photos">
+  <% @photos.each do |photo| %>
+    <%= image_tag photo.photo.url %><br> <%= photo.description %><br>
+  <% end %>
+</div>
