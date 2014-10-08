@@ -12,16 +12,14 @@ class PostsController < ApplicationController
       flash[:success] = "You have successfully posted a message."
       redirect_to user_path(@user)
     else
-      render 'users/show'
+      render 'edit'
     end
   end
 
   private
+
   def post_params
+    # return {poster_id: nil} unless params[:post_params]
     params.require(:post).permit(:message, :recipent_id, :poster_id )
   end
-
-  # def user_post_params
-  #   params.require.(:user_post).permit(:user_id, :poster_id, :post_id)
-  # end
 end
