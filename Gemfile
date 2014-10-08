@@ -44,6 +44,10 @@ gem 'foundation-rails'
 gem 'font-awesome-rails'
 gem 'kaminari'
 
+group :test do
+  gem 'coveralls', require: false
+end
+
 group :development, :test do
   gem 'valid_attribute'
   gem 'shoulda-matchers'
