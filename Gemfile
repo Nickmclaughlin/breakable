@@ -43,6 +43,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'foundation-rails'
 gem 'font-awesome-rails'
+gem 'kaminari'
 
 gem 'rails_12factor', group: :production
 

@@ -1,5 +1,22 @@
-<div class= "user-photos">
-  <% @photos.each do |photo| %>
-    <%= image_tag photo.photo.url %><br> <%= photo.description %><br>
-  <% end %>
-</div>
+<% if @user != current_user %>
+  <div class="large-8 large-centered column">
+    <ul class="example-orbit" data-orbit>
+    <% @photos.each do |photo| %>
+      <li class="photo"><%= image_tag photo.photo.url, :size => "400x600" %>
+        <div class="orbit-caption"><%= photo.description %><div>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if @user == current_user %>
+  <ol>
+    <% @photos.each do |photo| %>
+      <li><%= image_tag photo.photo.url, :size => "300x300" %>
+      <%= link_to "Delete", user_photo_path(@user, photo), method: :delete, data: {confirm: 'Are you sure you want to delete comment?'}, class: "button tiny delete" %>
+      <%= link_to "Make Profile Picture", edit_user_photo_path(@user, photo), class: "button tiny edit" %></li>
+    <% end %>
+  </ol>
+  <%= paginate @photos %>
+<% end %>

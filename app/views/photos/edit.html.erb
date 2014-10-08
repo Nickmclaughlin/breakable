@@ -1,0 +1,9 @@
+<%= form_for [@photo.user, @photo] do |f| %>
+  <p>
+    <%= f.label :profile_photo %> <br>
+    <%= f.select :profile_photo, options_for_select(["false", "true"]) %>
+  </p>
+
+  <%= f.submit 'Make Profile Picture', class: "button" %>
+
+<% end %>

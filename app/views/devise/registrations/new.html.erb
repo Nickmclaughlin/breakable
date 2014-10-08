@@ -15,14 +15,15 @@
   <div><%= f.label :last_name %><br />
   <%= f.text_field :last_name %></div>
 
+  <div><%= f.label :zip %><br />
+  <%= f.text_field :zip %></div>
+
   <div><%= f.label :password %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %><br />
     <%= f.password_field :password, autocomplete: "off" %></div>
 
   <div><%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
 
-  <div><%= f.label :profile_photo %><br />
-    <%= f.file_field :profile_photo %></div>
 
   <div><%= f.label :sex %><br />
     <%= f.select :sex, options_for_select(["Female", "Male"]) %></div>

@@ -1,35 +1,48 @@
-<img src=<%= @user.profile_photo %>><br>
-<% if !@user.photos.empty? %>
-  <%= link_to 'More Photos', user_photo_path(@user, @user.photos) %> <br>
-<% end %>
+<div class="row">
+  <div class="large-3 columns">
+    <% @user.photos.each do |photo| %>
+      <% if photo.profile_photo == true %>
+        <%= image_tag photo.photo.url %><br>
+      <% end %>
+    <% end %>
 
-Active Last: <%= @user.last_sign_in_at.to_date %>
+    <% if !@user.photos.empty? %>
+      <%= link_to 'More Photos', user_photo_path(@user, @user.photos) %> <br>
+    <% end %>
 
-<h4>Username: <%= @user.username %></h4><br>
-Profession: <%= @user.profession %><br>
-Education: <%= @user.education %><br>
-Bio: <%= @user.bio %><br>
-Interests: <%= @user.interests %><br><br>
-City: <%= @user.city %><br>
-State: <%= @user.state %><br>
-Zip: <%= @user.zip %><br>
-Age: <%= @user.age %><br>
-First Name: <%= @user.first_name %><br>
+    Active Last: <%= @user.last_sign_in_at.to_date %>
+  </div>
+  <div class="large-9 columns">
+    <h4>Username: <%= @user.username %></h4><br>
+    Profession: <%= @user.profession %><br>
+    Education: <%= @user.education %><br>
+    Bio: <%= @user.bio %><br>
+    Interests: <%= @user.interests %><br><br>
+    City: <%= @user.city %><br>
+    State: <%= @user.state %><br>
+    Zip: <%= @user.zip %><br>
+    Age: <%= @user.age %><br>
+    First Name: <%= @user.first_name %><br>
+  </div>
+</div>
 
+<div class="row">
+  <div class="large 12-columns">
+    Post on <%= @user.username %>'s wall<br><br>
+    <%= form_for [@user, @post] do |f| %>
+      <p>
+        <%= f.label :message %> <br>
+        <%= f.text_area :message %>
+      </p>
 
-Post on <%= @user.username %>'s wall<br><br>
-<%= form_for [@user, @post] do |f| %>
-  <p>
-    <%= f.label :message %> <br>
-    <%= f.text_area :message %>
-  </p>
+      <%= f.submit 'Post Message', class: "button" %>
 
-  <%= f.submit 'Post Message', class: "button" %>
+    <% end %><br><br>
 
-<% end %><br><br>
-
-<ol>
-  <% @user.received_posts.each do |post| %>
-    <li><%= post.message %> posted by: <%= link_to post.poster.username, user_path(post.poster) %></li>
-  <% end %>
-</ol>
+    <ol>
+      <% @user.received_posts.each do |post| %>
+        <li><%= post.message %> posted by: <%= link_to post.poster.username, user_path(post.poster) %></li>
+      <% end %>
+    </ol>
+  </div>
+</div>

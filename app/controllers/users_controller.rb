@@ -7,8 +7,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @post = Post.new
-    # binding.pry
-    # @posts = @user.posts
   end
 
   def update
@@ -24,6 +22,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
+    # return { zip: nil } unless params[:user]
     params.require(:user).permit(:sex, :first_name, :last_name, :username, :email, :profile_photo, :bio, :interests, :profession, :education, :age, :zip, :city, :state)
   end
 end
