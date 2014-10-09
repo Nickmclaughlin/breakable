@@ -102,8 +102,28 @@
   </div>
   <div class="large-9 columns">
     <h1>Welcome to the Breakable Community <%= @user.first_name %> <%= @user.last_name %>.</h1>
-    <p> Please start filling out your profile.  Remember this is an important step to making a connection so be thorough.</p>
-  <% end %>
+    <p> Please start filling out your profile.  Remember this is an important step to making a connection so be thorough.</p><br>
+        <%= form_for [@user, @photo] do |f| %>
+
+          <div class="upload-preview">
+            <img />
+          </div>
+
+          <p><%= f.label :photo %><br>
+            <%= f.file_field :photo, class: "file", type:"file" %>
+          </p>
+
+          <p class="description">
+            <%= f.label :description  %><br>
+            <%= f.text_field :description %>
+          </p>
+
+          <%= f.submit 'Submit Photo', class: "button" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 
 <div class="row">
   <div class="large-12 columns">
