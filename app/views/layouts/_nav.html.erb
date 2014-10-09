@@ -18,12 +18,14 @@
           <li><%= link_to "Your Profile", user_path(current_user) %></li>
           <li class="th"><img Height="35px" Width="37px" src=<%= current_user.profile_photo %>></li>
         <% end %>
-        <!-- <li><img Height="30px" Width="37px" src=<%= current_user.profile_photo %>></li> -->
-
+      <% if current_user.admin? %>
+          <li><%= link_to "Admin", admin_users_path %></li>
+      <% end %>
       <% else %>
         <li><%= link_to "sign up", new_user_registration_path %></li>
         <li><%= link_to "sign in", new_user_session_path %></li>
       <% end %>
+
     </ul>
   </section>
 </nav>

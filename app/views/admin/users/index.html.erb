@@ -1,0 +1,10 @@
+<ul>
+  <% @users.each do |user|%>
+    <% if !user.admin? %>
+    <li><%= link_to user.username, admin_user_path(user) %>
+      <%= link_to "Edit", edit_admin_user_path(user), class: "button tiny primary" %>
+      <%= link_to "Delete", admin_user_path(user), class: "button tiny alert", method: :delete, data: {confirm: 'Are you sure you want to delete comment?'} %>
+    </li>
+    <% end %>
+  <% end %>
+</ul>

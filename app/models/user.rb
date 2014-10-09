@@ -22,4 +22,8 @@ class User < ActiveRecord::Base
       self.all
     end
   end
+
+  def admin?
+    admin == true
+  end
 end

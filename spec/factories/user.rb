@@ -6,4 +6,13 @@ FactoryGirl.define do
     sex "Male"
     zip "02322"
   end
+
+  factory :admin, class: User do
+    email "Admin@email.com"
+    username  "Admin"
+    password "12345678"
+    admin true
+    sex "Male"
+    zip "02322"
+  end
 end
