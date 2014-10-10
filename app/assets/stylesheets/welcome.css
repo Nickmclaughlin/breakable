@@ -1,0 +1,23 @@
+body {
+  background: url("http://tuto-web.fr/wp-content/uploads/2013/07/grey-website-background-illusionapparel2.jpg");
+  background-size: cover;
+}
+
+.section-1 {
+  background-image: url(http://p1.pichost.me/640/44/1675943.jpg);
+  background-size: cover;
+  height: 650px;
+}
+
+.find-a-match h1 {
+  text-align: center;
+  font-size: 40px;
+  color: white;
+}
+
+.find-a-match h1 a {
+  color: white;
+}
+.find-a-match h1 a:hover {
+  color: #FF6600;
+}

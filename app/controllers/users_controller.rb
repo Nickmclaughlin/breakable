@@ -7,7 +7,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @post = Post.new
+    @posts = @user.received_posts.page params[:page]
   end
+
+  def index
+    @users = User.search(params[:search]).page params[:page]
+  end
+
 
   def update
     @user = User.find(params[:id])
