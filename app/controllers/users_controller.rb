@@ -22,7 +22,8 @@ class UsersController < ApplicationController
       flash[:success] = "You have successfully updated your profile."
       redirect_to root_path
     else
-      render 'edit'
+      flash[:alert] = "Please update correctly."
+      redirect_to user_path(@user)
     end
   end
 

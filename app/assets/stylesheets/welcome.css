@@ -5,7 +5,7 @@ body {
 
 .find-a-match {
   background-image: url(http://p1.pichost.me/640/44/1675943.jpg);
-  background-size: 100%;
+  background-size: cover;
   height: 650px;
 }
 
