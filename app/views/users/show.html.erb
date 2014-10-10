@@ -1,6 +1,6 @@
 <div class="row">
   <div class="large-3 columns" style="padding: 5px;">
-    <h3><%= @user.username %></h3>
+    <h3 class="screenname"><%= @user.username %></h3>
     <% @user.photos.each do |photo| %>
       <% if photo.profile_photo == true %>
         <%= image_tag photo.photo.url %><br>
@@ -8,10 +8,10 @@
     <% end %>
 
     <% if !@user.photos.empty? %>
-      <%= link_to 'More Photos', user_photo_path(@user, @user.photos) %> <br>
+      <div class="photo-link"><%= link_to 'More Photos', user_photo_path(@user, @user.photos) %></div>
     <% end %>
 
-    Active Last: <%= @user.last_sign_in_at.to_date %>
+    <div class="activity">Active Last: <%= @user.last_sign_in_at.to_date %></div>
   </div>
   <div class="large-9 columns user-info">
     <table>
