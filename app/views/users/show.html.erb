@@ -1,5 +1,6 @@
 <div class="row">
-  <div class="large-3 columns">
+  <div class="large-3 columns" style="padding: 5px;">
+    <h3 class="screenname"><%= @user.username %></h3>
     <% @user.photos.each do |photo| %>
       <% if photo.profile_photo == true %>
         <%= image_tag photo.photo.url %><br>
@@ -7,41 +8,66 @@
     <% end %>
 
     <% if !@user.photos.empty? %>
-      <%= link_to 'More Photos', user_photo_path(@user, @user.photos) %> <br>
+      <div class="photo-link"><%= link_to 'More Photos', user_photo_path(@user, @user.photos) %></div>
     <% end %>
 
-    Active Last: <%= @user.last_sign_in_at.to_date %>
+    <div class="activity">Active Last: <%= @user.last_sign_in_at.to_date %></div>
   </div>
-  <div class="large-9 columns">
-    <h4>Username: <%= @user.username %></h4><br>
-    Profession: <%= @user.profession %><br>
-    Education: <%= @user.education %><br>
-    Bio: <%= @user.bio %><br>
-    Interests: <%= @user.interests %><br><br>
-    City: <%= @user.city %><br>
-    State: <%= @user.state %><br>
-    Zip: <%= @user.zip %><br>
-    Age: <%= @user.age %><br>
-    First Name: <%= @user.first_name %><br>
+  <div class="large-9 columns user-info">
+    <table>
+      <tr>
+        <td>First Name</td>
+        <td><%= @user.first_name %></td>
+      </tr>
+      <tr>
+        <td>Age</td>
+        <td><%= @user.age %></td>
+      </tr>
+      <tr>
+        <td width="125">Profession</td>
+        <td><%= @user.profession %></td>
+      </tr>
+      <tr>
+        <td>Education</td>
+        <td><%= @user.education %></td>
+      </tr>
+      <tr>
+        <td>State</td>
+        <td><%= @user.state %></td>
+      </tr>
+      <tr>
+        <td>Bio</td>
+        <td><%= @user.bio %></td>
+      </tr>
+      <tr>
+        <td>Interests</td>
+        <td><%= @user.interests %></td>
+      </tr>
+    </table>
   </div>
 </div>
 
 <div class="row">
-  <div class="large 12-columns">
-    Post on <%= @user.username %>'s wall<br><br>
+  <div class="large 5 -columns large-centered columns">
+    <h4>Post on <%= @user.username %>'s wall</h4>
     <%= form_for [@user, @post] do |f| %>
-      <p>
+      <p class="message-title">
         <%= f.label :message %> <br>
         <%= f.text_area :message %>
       </p>
 
       <%= f.submit 'Post Message', class: "button" %>
 
-    <% end %><br><br>
-
+    <% end %><br>
+    <div class="posts">
       <% @posts.each do |post| %>
-        <%= post.message %> posted by: <%= link_to post.poster.username, user_path(post.poster) %><br><br>
+        <% post.poster.photos.each do |photo| %>
+          <% if photo.profile_photo == true %>
+            <%= image_tag photo.photo.url, style:"height: 30px; width: 30px;"%> <%= post.message %> posted by: <%= link_to post.poster.username, user_path(post.poster) %><br>
+          <% end %>
+        <% end %>
       <% end %>
+    </div>
 
   </div>
   <%= paginate @posts %>
@@ -49,4 +75,4 @@
 
 <br>
 <br>
-<%= link_to "Delete Profile", user_path(@user), class: "button tiny alert", method: :delete, data: {confirm: 'Are you sure you want to delete comment?'} %>
+<%= link_to "Delete Profile", user_path(@user), class: "button tiny alert", method: :delete, data: {confirm: 'Are you sure you want to delete your profile?'} %>

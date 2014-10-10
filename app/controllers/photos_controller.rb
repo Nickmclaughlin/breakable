@@ -49,7 +49,6 @@ class PhotosController < ApplicationController
 
   private
   def photo_params
-    # return {user_id: nil} unless params[:post_params]
     params.require(:photo).permit(:photo, :user_id, :description, :profile_photo)
   end
 end

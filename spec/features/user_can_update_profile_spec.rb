@@ -31,21 +31,19 @@ feature "After log in user can complete profile then update it" do
     expect(page).to have_content("You have successfully updated your profile.")
   end
 
+  scenario "User updates zip blank" do
+    user = FactoryGirl.create(:user)
 
-  # scenario "User updates zip blank" do
-  #   user = FactoryGirl.create(:user)
-  #
-  #   sign_in_as(user)
-  #
-  #   visit root_path
-  #
-  #   click_on "Complete Profile"
-  #
-  #   fill_in("Zip", with: "")
-  #
-  #   click_on "Update Profile"
-  #
-  #   expect(page).to have_content("prohibited")
-  #
-  # end
+    sign_in_as(user)
+
+    visit root_path
+
+    click_on "Complete Profile"
+
+    fill_in("Zip", with: "")
+    click_on "Update Profile"
+
+    expect(page).to have_content("Please update correctly.")
+
+  end
 end
