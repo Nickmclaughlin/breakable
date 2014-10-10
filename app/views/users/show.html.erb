@@ -12,17 +12,38 @@
 
     Active Last: <%= @user.last_sign_in_at.to_date %>
   </div>
-  <div class="large-9 columns">
+  <div class="large-9 columns user-info">
     <h4>Username: <%= @user.username %></h4><br>
-    Profession: <%= @user.profession %><br>
-    Education: <%= @user.education %><br>
-    Bio: <%= @user.bio %><br>
-    Interests: <%= @user.interests %><br><br>
-    City: <%= @user.city %><br>
-    State: <%= @user.state %><br>
-    Zip: <%= @user.zip %><br>
-    Age: <%= @user.age %><br>
-    First Name: <%= @user.first_name %><br>
+    <table>
+      <tr>
+        <td width="125">Profession</td>
+        <td><%= @user.profession %></td>
+      </tr>
+      <tr>
+        <td>Education</td>
+        <td><%= @user.education %></td>
+      </tr>
+      <tr>
+        <td>Bio</td>
+        <td><%= @user.bio %></td>
+      </tr>
+      <tr>
+        <td>Interests</td>
+        <td><%= @user.interests %></td>
+      </tr>
+      <tr>
+        <td>State</td>
+        <td><%= @user.state %></td>
+      </tr>
+      <tr>
+        <td>Age</td>
+        <td><%= @user.age %></td>
+      </tr>
+      <tr>
+        <td>First Name</td>
+        <td><%= @user.first_name %></td>
+      </tr>
+    </table>
   </div>
 </div>
 

@@ -1,5 +1,5 @@
 body {
-  background: url("http://tuto-web.fr/wp-content/uploads/2013/07/grey-website-background-illusionapparel2.jpg");
+  background: url("http://wallsev.com/wp-content/uploads/2014/01/simple-grey-wallpaper-8113.jpg");
   background-size: cover;
 }
 
@@ -18,6 +18,19 @@ body {
 .find-a-match h1 a {
   color: white;
 }
+
 .find-a-match h1 a:hover {
   color: #FF6600;
+}
+
+.header h1 {
+  color: white;
+}
+
+.header h5 {
+  color: white;
+}
+
+.matched-users h1 {
+  color: white;
 }
