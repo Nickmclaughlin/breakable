@@ -49,6 +49,7 @@
 
 <div class="row">
   <div class="large 5 -columns large-centered columns">
+    <% if @user.sex != current_user.sex %>
     <h4>Post on <%= @user.username %>'s wall</h4>
     <%= form_for [@user, @post] do |f| %>
       <p class="message-title">
@@ -58,17 +59,22 @@
 
       <%= f.submit 'Post Message', class: "button" %>
 
-    <% end %><br>
+    <% end %>
+    <% end %>
     <div class="posts">
-      <% @posts.each do |post| %>
-        <% post.poster.photos.each do |photo| %>
-          <% if photo.profile_photo == true %>
-            <%= image_tag photo.photo.url, style:"height: 30px; width: 30px;"%> <%= post.message %> posted by: <%= link_to post.poster.username, user_path(post.poster) %><br>
+      <% if @user.sex != current_user.sex || @user == current_user %>
+        <% @posts.each do |post| %>
+          <% post.poster.photos.each do |photo| %>
+            <% if photo.profile_photo == true %>
+              <%= image_tag photo.photo.url, style:"height: 30px; width: 30px;"%> <%= post.message %> posted by: <%= link_to post.poster.username, user_path(post.poster) %>
+              <% if post.poster || post.recipent %>
+                <%= link_to "Delete", user_post_path(post.poster, post), class: "button tiny alert" %><br>
+              <% end %>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
     </div>
-
   </div>
   <%= paginate @posts %>
 </div>

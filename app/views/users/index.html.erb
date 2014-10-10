@@ -19,14 +19,14 @@
 
   <div class="small-6 columns matched-users">
     <h1> Matched Users </h1>
-      <% if @users %>
       <% @users.each do |user| %>
-        <% user.photos.each do |photo| %>
-          <% if photo.profile_photo == true %>
-            <div><%= image_tag photo.photo.url, style:"height: 30px; width: 30px;" %> <%= link_to user.username, user_path(user) %><br></div>
+        <% if current_user.sex != user.sex%>
+          <% user.photos.each do |photo| %>
+            <% if photo.profile_photo == true %>
+              <div><%= image_tag photo.photo.url, style:"height: 30px; width: 30px;" %> <%= link_to user.username, user_path(user) %><br></div>
+            <% end %>
           <% end %>
         <% end %>
-      <% end %>
       <% end %>
       <%= paginate @users %>
   </div>
