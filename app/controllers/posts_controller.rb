@@ -12,7 +12,8 @@ class PostsController < ApplicationController
       flash[:success] = "You have successfully posted a message."
       redirect_to user_path(@user)
     else
-      render 'edit'
+      flash[:alert] = "Please fill out message in order to post."
+      redirect_to user_path(@user)
     end
   end
 
