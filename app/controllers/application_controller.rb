@@ -8,6 +8,13 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name, :username, :zip, :sex]
+    devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name, :username, :zip, :sex, :admin]
+  end
+
+  def admin_authorize!
+    if !current_user.admin?
+      flash[:warning] = "Invalid request"
+      redirect_to root_path
+    end
   end
 end

@@ -14,8 +14,14 @@
   <ol>
     <% @photos.each do |photo| %>
       <li><%= image_tag photo.photo.url, :size => "300x300" %>
-      <%= link_to "Delete", user_photo_path(@user, photo), method: :delete, data: {confirm: 'Are you sure you want to delete comment?'}, class: "button tiny delete" %>
-      <%= link_to "Make Profile Picture", edit_user_photo_path(@user, photo), class: "button tiny edit" %></li>
+        <%= link_to "Delete", user_photo_path(@user, photo), method: :delete, data: {confirm: 'Are you sure you want to delete photo?'}, class: "button tiny delete" %>
+        <% if photo.profile_photo == false %>
+          <%= link_to "Make Profile Picture", edit_user_photo_path(@user, photo), class: "button tiny edit" %></li>
+        <% end %>
+        <% if photo.profile_photo == true %>
+          <%= link_to "Change Profile Picture", edit_user_photo_path(@user, photo), class: "button tiny edit" %></li>
+        <% end %>
+
     <% end %>
   </ol>
   <%= paginate @photos %>

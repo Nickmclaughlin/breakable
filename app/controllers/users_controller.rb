@@ -7,7 +7,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @post = Post.new
+    @posts = @user.received_posts.page params[:page]
   end
+
+  def index
+    @users = User.search(params[:search]).page params[:page]
+  end
+
 
   def update
     @user = User.find(params[:id])
@@ -18,6 +24,15 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+
+    flash[:success] = "You have successfully deleted your account."
+
+    redirect_to root_path
   end
 
   private
