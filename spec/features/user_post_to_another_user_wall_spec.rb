@@ -3,7 +3,7 @@ require 'rails_helper'
 feature "User can post on wall" do
   scenario "user successfully posts on wall" do
     user = FactoryGirl.create(:user)
-    user2 = FactoryGirl.create(:user)
+    user2 = FactoryGirl.create(:user, sex: "female")
     sign_in_as(user)
     visit user_path(user2)
 
@@ -16,7 +16,7 @@ feature "User can post on wall" do
 
   scenario "user unsuccessfully posts on wall" do
     user = FactoryGirl.create(:user)
-    user2 = FactoryGirl.create(:user)
+    user2 = FactoryGirl.create(:user, sex: "female")
     sign_in_as(user)
     visit user_path(user2)
 
@@ -25,5 +25,15 @@ feature "User can post on wall" do
     click_on "Post Message"
 
     expect(page).to have_content("Please fill out message in order to post.")
+  end
+
+  scenario "User unable to post on same sex wall" do
+    user = FactoryGirl.create(:user)
+    user2 = FactoryGirl.create(:user)
+
+    sign_in_as(user)
+    visit user_path(user2)
+
+    expect(page).to have_no_content("Post Message")
   end
 end
