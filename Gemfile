@@ -43,6 +43,7 @@ gem 'fog'
 gem 'foundation-rails'
 gem 'font-awesome-rails'
 gem 'kaminari'
+gem 'geocoder'
 
 group :test do
   gem 'coveralls', require: false
@@ -56,6 +57,8 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'factory_girl_rails'
+  gem 'mailcatcher'
+  gem 'email_spec'
 end
 
 group :development, :test do
