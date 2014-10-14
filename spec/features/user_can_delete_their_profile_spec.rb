@@ -5,7 +5,7 @@ feature "User can delete their profile" do
     user = FactoryGirl.create(:user)
     sign_in_as(user)
 
-    visit user_path(user)
+    visit edit_user_path(user)
 
     click_on "Delete Profile"
 
