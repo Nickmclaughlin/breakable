@@ -1,40 +1,134 @@
 <script src="preview_photo.js"></script>
-<div class="row">
-  <div class="large-3 columns">
-    <% @user.photos.each do |photo| %>
-      <% if photo.profile_photo == true %>
-        <%= image_tag photo.photo.url %><br>
+<div class="edit-user">
+  <div class="row">
+    <div class="large-3 columns">
+      <% @user.photos.each do |photo| %>
+        <% if photo.profile_photo == true %>
+          <%= image_tag photo.photo.url %><br>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+    <div class="large-9 columns">
+      <% if @user.bio != nil %>
+        Welcome <%= @user.first_name %> - Add Some Photos<br>
+        <%= form_for [@user, @photo] do |f| %>
+
+          <div class="upload-preview">
+            <img />
+          </div>
+
+          <p><%= f.label :photo %><br>
+            <%= f.file_field :photo, class: "file", type:"file" %>
+          </p>
+
+          <p class="description">
+            <%= f.label :description  %><br>
+            <%= f.text_field :description %>
+          </p>
+
+          <%= f.submit 'Submit Photo', class: "button" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
-  <div class="large-9 columns">
-    <% if @user.bio != nil %>
-      Welcome <%= @user.first_name %> - Add Some Photos<br>
-      <%= form_for [@user, @photo] do |f| %>
 
-        <div class="upload-preview">
-          <img />
-        </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <% if @user.bio != nil %>
+        <%= form_for @user do |f| %>
+          <% if @user.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@user.errors.count, "error") %> prohibited
+                  your profile from being saved:</h2>
+                <ul>
+                  <% @user.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end%>
 
-        <p><%= f.label :photo %><br>
-          <%= f.file_field :photo, class: "file", type:"file" %>
+        <p>
+          <%= f.label :age %><br>
+          <%= f.select :age, options_for_select(User::AGE) %>
         </p>
 
-        <p class="description">
-          <%= f.label :description  %><br>
-          <%= f.text_field :description %>
+        <p>
+          <%= f.label :profession %><br>
+          <%= f.text_field :profession %>
         </p>
 
-        <%= f.submit 'Submit Photo', class: "button" %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-</div>
+        <p>
+          <%= f.label :education %><br>
+          <%= f.select :education, options_for_select(["High School", "College", "Graduate School"]) %>
+        </p>
 
-<div class="row">
-  <div class="large-12 columns">
-    <% if @user.bio != nil %>
+        <p>
+          <%= f.label :bio %> <br>
+          <%= f.text_area :bio %>
+        </p>
+
+        <p>
+          <%= f.label :state %><br>
+          <%= f.select :state, options_for_select(User::STATES) %>
+        </p>
+
+        <p>
+          <%= f.label :zip %><br>
+          <%= f.text_field :zip %>
+        </p>
+
+        <p>
+          <%= f.label :interests %><br>
+          <%= f.text_area :interests %>
+        </p>
+
+        <%= f.submit 'Update Profile', class: "button" %>
+
+
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-3 columns">
+    <% if @user.bio == nil %>
+      <% @user.photos.each do |photo| %>
+        <% if photo.profile_photo == true %>
+          <%= image_tag photo.photo.url %><br>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="large-9 columns">
+      <h1>Welcome to the Breakable Community <%= @user.first_name %> <%= @user.last_name %>.</h1>
+      <p> Please start filling out your profile.  Remember this is an important step to making a connection so be thorough.</p><br>
+          <%= form_for [@user, @photo] do |f| %>
+
+            <div class="upload-preview">
+              <img />
+            </div>
+
+            <p><%= f.label :photo %><br>
+              <%= f.file_field :photo, class: "file", type:"file" %>
+            </p>
+
+            <p class="description">
+              <%= f.label :description  %><br>
+              <%= f.text_field :description %>
+            </p>
+
+            <%= f.submit 'Submit Photo', class: "button" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+  <div class="row">
+    <div class="large-12 columns">
+    <% if @user.bio == nil && @user.profession == nil  && @user.interests == nil %>
       <%= form_for @user do |f| %>
         <% if @user.errors.any? %>
             <div id="error_explanation">
@@ -85,102 +179,9 @@
 
       <%= f.submit 'Update Profile', class: "button" %>
 
-
       <% end %>
     <% end %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="large-3 columns">
-  <% if @user.bio == nil %>
-    <% @user.photos.each do |photo| %>
-      <% if photo.profile_photo == true %>
-        <%= image_tag photo.photo.url %><br>
-      <% end %>
-    <% end %>
-  </div>
-  <div class="large-9 columns">
-    <h1>Welcome to the Breakable Community <%= @user.first_name %> <%= @user.last_name %>.</h1>
-    <p> Please start filling out your profile.  Remember this is an important step to making a connection so be thorough.</p><br>
-        <%= form_for [@user, @photo] do |f| %>
-
-          <div class="upload-preview">
-            <img />
-          </div>
-
-          <p><%= f.label :photo %><br>
-            <%= f.file_field :photo, class: "file", type:"file" %>
-          </p>
-
-          <p class="description">
-            <%= f.label :description  %><br>
-            <%= f.text_field :description %>
-          </p>
-
-          <%= f.submit 'Submit Photo', class: "button" %>
-          </div>
-        <% end %>
-      <% end %>
     </div>
   </div>
-
-<div class="row">
-  <div class="large-12 columns">
-  <% if @user.bio == nil && @user.profession == nil  && @user.interests == nil %>
-    <%= form_for @user do |f| %>
-      <% if @user.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@user.errors.count, "error") %> prohibited
-              your profile from being saved:</h2>
-            <ul>
-              <% @user.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-              <% end %>
-            </ul>
-          </div>
-      <% end%>
-
-    <p>
-      <%= f.label :age %><br>
-      <%= f.select :age, options_for_select(User::AGE) %>
-    </p>
-
-    <p>
-      <%= f.label :profession %><br>
-      <%= f.text_field :profession %>
-    </p>
-
-    <p>
-      <%= f.label :education %><br>
-      <%= f.select :education, options_for_select(["High School", "College", "Graduate School"]) %>
-    </p>
-
-    <p>
-      <%= f.label :bio %> <br>
-      <%= f.text_area :bio %>
-    </p>
-
-    <p>
-      <%= f.label :state %><br>
-      <%= f.select :state, options_for_select(User::STATES) %>
-    </p>
-
-    <p>
-      <%= f.label :zip %><br>
-      <%= f.text_field :zip %>
-    </p>
-
-    <p>
-      <%= f.label :interests %><br>
-      <%= f.text_area :interests %>
-    </p>
-
-    <%= f.submit 'Update Profile', class: "button" %>
-
-    <% end %>
-  <% end %>
+  <%= link_to "Delete Profile", user_path(@user), class: "button tiny alert", method: :delete, data: {confirm: 'Are you sure you want to delete comment?'} %>
 </div>
-</div>
-
-<%= link_to "Delete Profile", user_path(@user), class: "button tiny alert", method: :delete, data: {confirm: 'Are you sure you want to delete comment?'} %>

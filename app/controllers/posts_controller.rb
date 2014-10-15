@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
   end
+
   def create
     @post = Post.new(post_params)
     @user = User.find(params[:user_id])
@@ -17,10 +18,17 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+
+    flash[:success] = "You have successfully deleted this comment."
+    redirect_to user_path(@post.recipient)
+  end
+
   private
 
   def post_params
-    # return {poster_id: nil} unless params[:post_params]
     params.require(:post).permit(:message, :recipent_id, :poster_id )
   end
 end

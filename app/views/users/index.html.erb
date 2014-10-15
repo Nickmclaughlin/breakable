@@ -15,19 +15,24 @@
         </div>
       </div>
     <% end %>
-    <%= paginate @users %>
 
   <div class="small-6 columns matched-users">
     <h1> Matched Users </h1>
+    <ul>
       <% if @users %>
-      <% @users.each do |user| %>
-        <% user.photos.each do |photo| %>
-          <% if photo.profile_photo == true %>
-            <div><%= image_tag photo.photo.url, style:"height: 30px; width: 30px;" %> <%= link_to user.username, user_path(user) %><br></div>
+        <% @users.each do |user| %>
+          <% if current_user.sex != user.sex %>
+            <% user.photos.each do |photo| %>
+            <% if photo.profile_photo == true %>
+              <li><%= image_tag photo.photo.url, style:"height: 30px; width: 30px;"%>
+            <% end %>
+          <% end %>
+              <%= link_to user.username, user_path(user) %>
+            <%= Geocoder::Calculations.distance_between([current_user.latitude, current_user.longitude],[user.latitude, user.longitude]).round(2) %> Miles
+          </li>
           <% end %>
         <% end %>
       <% end %>
-      <% end %>
-      <%= paginate @users %>
+    </ul>
   </div>
 </div>

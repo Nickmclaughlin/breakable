@@ -4,15 +4,18 @@ body {
 }
 
 .find-a-match {
-  background-image: url(http://p1.pichost.me/640/44/1675943.jpg);
-  background-size: cover;
+/*   background-image: url(http://p1.pichost.me/640/44/1675943.jpg);
+ */  background-size: cover;
   height: 650px;
-}
 
+}
 .find-a-match h1 {
   text-align: center;
   font-size: 40px;
   color: white;
+  position: relative;
+  top: 35%;
+  transform: translateY(-50%);
 }
 
 .find-a-match h1 a {
