@@ -1,11 +1,11 @@
 <div class="row">
   <div class="large-3 columns" style="padding: 5px;">
     <h3 class="screenname"><%= @user.username %></h3>
-    <% @user.photos.each do |photo| %>
-      <% if photo.profile_photo == true %>
-        <%= image_tag @profile_photo, style:"height: 200px; width: 200px;"  %><br>
+      <% if @profile_photo != nil %>
+        <%= image_tag @profile_photo, style:"height: 200px; width: 200px;" %>
+      <% else %>
+        <%= image_tag 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSZtW3Ymm4eva-4-lPOkW5tNTN6mUM4qYZNckFWaN11PUQ1Hm1O', style:"height: 200px; width: 200px;"  %>
       <% end %>
-    <% end %>
 
     <% if !@user.photos.empty? && current_user != @user %>
       <div class="photo-link"><%= link_to 'More Photos', user_photo_path(@user, @user.photos) %></div>
