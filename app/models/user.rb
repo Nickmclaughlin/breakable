@@ -9,6 +9,12 @@ class User < ActiveRecord::Base
   has_many :received_posts, class_name: "Post", foreign_key: 'recipient_id'
   has_many :photos
 
+  has_many :sent_responses, class_name: "Response", foreign_key: 'poster_id'
+  has_many :received_responses, class_name: "Response", foreign_key: 'recipient_id'
+
+  has_many :sent_nudges, class_name: "Nudge", foreign_key: 'nudger_id'
+  has_many :received_nudges, class_name: "Nudge", foreign_key: 'recipient_id'
+
   validates :sex, presence: true
   validates :zip, presence: true
   validates :username, presence: true, uniqueness: true

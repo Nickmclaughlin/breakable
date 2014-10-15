@@ -16,6 +16,7 @@ class UsersController < ApplicationController
       end
       @profile_photo = profile_photo.pop
     end
+    @response = Response.new
   end
 
   def index
@@ -50,6 +51,22 @@ class UsersController < ApplicationController
     flash[:success] = "You have successfully deleted your account."
 
     redirect_to root_path
+  end
+
+  def nudge
+    @user = User.find(params[:user_id])
+    @nudge = Nudge.find_or_create_by(nudger_id: current_user.id)
+    @nudge.recipient_id = params[:user_id]
+
+    @nudge.score +=1
+
+    if @nudge.save
+      flash[:success] =  "You nudged #{@user.username}"
+      redirect_to user_path(@user)
+    else
+      flash[:warning] = "Already Nudged"
+      redirect_to user_path(@user)
+    end
   end
 
   private

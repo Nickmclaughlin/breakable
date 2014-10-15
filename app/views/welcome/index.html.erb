@@ -3,7 +3,7 @@
     <h1><%= link_to "Find a Match", users_path %></h1>
   <% end %>
   <% if !current_user %>
-    <h2> Sign Up Today </h2>
+    <h2> <%= link_to "Sign Up Today", user_registration_path %> </h2>
   <% end %>
 </div>
 <div class="row">
