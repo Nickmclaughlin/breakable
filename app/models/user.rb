@@ -43,10 +43,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def nudged(user)
-    votes.where(recipient_id: user.nudge.recipient_id)
-  end
-
   def admin?
     admin == true
   end
