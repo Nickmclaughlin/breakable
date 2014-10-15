@@ -15,6 +15,29 @@
     <% end %>
 
     <div class="activity">Active Last: <%= @user.last_sign_in_at.to_date %></div>
+
+    <% if current_user != @user %>
+      <% @user.received_nudges.each do |nudge| %>
+      <% if nudge.nudger_id != current_user.id %>
+      <div><%= link_to "Nudge", user_nudge_path(@user), method: :post, class: "button tiny alert" %></div>
+      <% end %>
+        <% if nudge.nudger_id == current_user.id %>
+          <button>
+            Nudged
+          </button>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <% if current_user == @user %>
+      <% if !@user.received nudges.empty?%>
+        You have been nudged by
+        <% @user.received_nudges.each do |nudge| %>
+          <%= link_to nudge.nudger.username, user_path(nudger) %>
+        <% end %>
+      <% end %>
+    <% end %>
+
   </div>
   <div class="large-9 columns user-info">
     <table>
@@ -72,7 +95,19 @@
               <% if post.poster || post.recipent || current_user.admin? %>
                 <div><%= image_tag photo.photo.url, style:"height: 30px; width: 30px;"%> <%= post.message %> posted by: <%= link_to post.poster.username, user_path(post.poster) %>
                   <%= link_to "Delete", user_post_path(post.poster, post), style:"float: right;", class: "button tiny alert", method: :delete, data: {confirm: 'Are you sure you want to delete this comment?'} %>
-                </div><br>
+                </div>
+                <% post.responses.each do |response| %>
+                  <div style="margin-left: 50px;"><%= response.body%> sent by <%= link_to response.poster.username, user_path(response.poster) %></div>
+                <% end %>
+                <div style="margin-left: 100px;"><%= form_for [@user, post, @response] do |f| %>
+                  <p>
+                    <%= f.text_area :body, style: "width: 300px;" %>
+                  </p>
+
+                  <%= f.submit 'Post response', class: "button" %>
+
+                <% end %>
+              </div>
               <% end %>
             <% end %>
           <% end %>

@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141014044944) do
+ActiveRecord::Schema.define(version: 20141015212003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "nudges", force: true do |t|
+    t.integer  "nudger_id"
+    t.integer  "recipient_id"
+    t.integer  "score",        default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "photos", force: true do |t|
     t.boolean  "profile_photo", default: false
@@ -31,6 +39,15 @@ ActiveRecord::Schema.define(version: 20141014044944) do
     t.string   "message"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "responses", force: true do |t|
+    t.string   "body"
+    t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "poster_id"
+    t.integer  "recipient_id"
   end
 
   create_table "users", force: true do |t|

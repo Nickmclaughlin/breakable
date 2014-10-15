@@ -3,8 +3,11 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :users do
-    resources :posts
+    resources :posts do
+      resources :responses
+    end
     resources :photos
+    post 'nudge', to: "users#nudge"
   end
 
   namespace :admin do
