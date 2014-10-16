@@ -10,5 +10,6 @@ describe Post do
   describe 'associations' do
     it { should belong_to(:poster) }
     it { should belong_to(:recipient) }
+    it { should have_many(:responses) }
   end
 end

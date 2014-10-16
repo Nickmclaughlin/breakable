@@ -9,7 +9,7 @@ class Photo < ActiveRecord::Base
       false
     end
   end
-  
+
   mount_uploader :photo, PhotoUploader
   validates :photo, presence: true
   validates :user_id, presence: true

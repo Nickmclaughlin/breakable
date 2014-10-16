@@ -16,3 +16,16 @@
 .photo-link {
   font-size: 25px;
 }
+
+.post {
+  background-color: white;
+  opacity: .6;
+}
+
+.response {
+  background-color: white;
+  margin-left: 50px;
+}
+.responses {
+  margin-bottom: 1cm;
+}

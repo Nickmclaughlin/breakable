@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  mount_uploader :profile_photo, ProfilePhotoUploader
+
+  # mount_uploader :profile_photo, ProfilePhotoUploader
 
   has_many :sent_posts, class_name: "Post", foreign_key: 'poster_id'
   has_many :received_posts, class_name: "Post", foreign_key: 'recipient_id'
@@ -46,4 +47,19 @@ class User < ActiveRecord::Base
   def admin?
     admin == true
   end
+
+  def prof_photo(photos)
+    profile_photo = []
+    photos.each do |photo|
+      if photo.profile_photo == true
+        profile_photo << photo.photo.url
+      end
+    end
+    if profile_photo.length == 1
+      profile_photo.pop
+    else
+      "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSZtW3Ymm4eva-4-lPOkW5tNTN6mUM4qYZNckFWaN11PUQ1Hm1O"
+    end
+  end
+
 end
