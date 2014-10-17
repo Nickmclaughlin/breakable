@@ -1,38 +1,36 @@
-<div class="row information" style="margin-left: 10px;">
-  <div class="large-12 columns header">
-    <h1>Find A Match</h1>
-    <h5>Search By: Interests, Location, Occupation</h5>
-  </div>
+<div class="search-users"
 
-  <div class="large-12 columns">
-    <%= form_tag users_path, method: :get do %>
-      <div class="row collapse">
-        <div class="small-8 columns">
-          <%= text_field_tag :search, params[:search] %>
-        </div>
+    <div class="large-8 columns">
+      <h1>Find A Match</h1>
+      <h5>Search By: Interests, Location, Occupation</h5>
+
+      <%= form_tag users_path, method: :get do %>
         <div>
-          <%= fa_icon("search") %>
+          <div class="search-bar">
+            <%= text_field_tag :search, params[:search]%>
+          </div>
+          <div>
+            <%= fa_icon("search") %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
 
-  <div class="small-6 columns matched-users">
-    <h1> Matched Users </h1>
-    <ul>
-      <% if @users %>
-        <% @users.each do |user| %>
-          <% if current_user.sex != user.sex %>
-            <% user.photos.each do |photo| %>
-            <% if photo.profile_photo == true %>
-              <li><%= image_tag photo.photo.url, style:"height: 30px; width: 30px;"%>
+      <h1> Matched Users </h1>
+      <ul>
+        <% if @users %>
+          <% @users.each do |user| %>
+            <% if current_user.sex != user.sex %>
+              <% user.photos.each do |photo| %>
+              <% if photo.profile_photo == true %>
+                <li><%= image_tag photo.photo.url, style:"height: 30px; width: 30px;"%>
+              <% end %>
+            <% end %>
+                <%= link_to user.username, user_path(user) %>
+                <%= Geocoder::Calculations.distance_between([current_user.latitude, current_user.longitude],[user.latitude, user.longitude]).round(2) %> Miles
+                </li>
             <% end %>
           <% end %>
-              <%= link_to user.username, user_path(user) %>
-            <%= Geocoder::Calculations.distance_between([current_user.latitude, current_user.longitude],[user.latitude, user.longitude]).round(2) %> Miles
-          </li>
-          <% end %>
         <% end %>
-      <% end %>
-    </ul>
-  </div>
+      </ul>
+    </div>
 </div>

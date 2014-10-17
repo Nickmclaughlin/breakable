@@ -10,7 +10,7 @@
     </div>
     <div class="large-9 columns">
       <% if @user.bio != nil %>
-        Welcome <%= @user.first_name %> - Add Some Photos<br>
+        Welcome <%= @user.first_name %> - More Photos = Better<br>
         <%= form_for [@user, @photo] do |f| %>
 
           <div class="upload-preview">
@@ -23,7 +23,7 @@
 
           <p class="description">
             <%= f.label :description  %><br>
-            <%= f.text_field :description %>
+            <%= f.text_field :description, style: "width: 400px;" %>
           </p>
 
           <%= f.submit 'Submit Photo', class: "button" %>

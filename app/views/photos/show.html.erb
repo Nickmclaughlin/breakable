@@ -1,13 +1,15 @@
 <% if @user != current_user %>
+<div class="slideshow">
   <div class="large-8 large-centered column">
     <ul class="example-orbit" data-orbit>
     <% @photos.each do |photo| %>
-      <li class="photo"><%= image_tag photo.photo.url, :size => "400x600" %>
-        <div class="orbit-caption"><%= photo.description %><div>
+      <li><%= image_tag photo.photo.url %>
+        <div class="orbit-caption"><%= photo.description %></div>
       </li>
     <% end %>
     </ul>
   </div>
+</div>
 <% end %>
 
 <% if @user == current_user %>

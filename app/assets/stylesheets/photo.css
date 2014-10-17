@@ -5,3 +5,11 @@
 /* .description {
   width:300px;
 } */
+.photo {
+  width: 400px;
+  height: 400px;
+}
+
+.slide-show {
+  height: 200px;
+}

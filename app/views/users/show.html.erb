@@ -2,7 +2,7 @@
   <div class="large-3 columns" style="padding: 5px;">
     <h3 class="screenname"><%= @user.username %></h3>
       <% if @profile_photo != nil %>
-        <%= image_tag @profile_photo, style:"height: 200px; width: 200px;" %>
+        <%= image_tag @profile_photo, style:"height: 250px; width: 200px;" %>
       <% else %>
         <%= image_tag 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSZtW3Ymm4eva-4-lPOkW5tNTN6mUM4qYZNckFWaN11PUQ1Hm1O', style:"height: 200px; width: 200px;"  %>
       <% end %>
@@ -16,7 +16,7 @@
 
     <div class="activity">Active Last: <%= @user.last_sign_in_at.to_date %></div>
 
-      <% if current_user.sent_nudges.empty?%>
+      <% if current_user.sent_nudges.empty? && current_user != @user%>
         <div><%= link_to "Nudge", user_nudge_path(@user), method: :post, class: "button tiny alert" %></div>
       <% end %>
 
