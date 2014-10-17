@@ -21,7 +21,7 @@
       <% end %>
 
       <% current_user.sent_nudges.each do |nudge| %>
-        <% if nudge.nudger_id != current_user.id %>
+        <% if nudge.recipient_id != @user.id  && current_user != @user%>
           <div><%= link_to "Nudge", user_nudge_path(@user), method: :post, class: "button tiny alert" %></div>
         <% end %>
       <% end %>
@@ -99,7 +99,7 @@
     <div class="posts">
 
         <% @posts.each do |post| %>
-        <% if @user == current_user || current_user.admin? || post.poster = current_user %>
+        <% if @user == current_user || current_user.admin? || post.poster == current_user %>
           <% post.poster.photos.each do |photo| %>
             <% if photo.profile_photo == true %>
               <% if post.poster || post.recipent %>

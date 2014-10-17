@@ -3,7 +3,7 @@ class ResponsesController < ApplicationController
     @response = Response.new(response_params)
     @post = Post.find(params[:post_id])
     @response.post_id = params[:post_id]
-    @response.poster_id = params[:user_id]
+    @response.poster_id = current_user.id
     @response.recipient_id = @post.recipient_id
 
     if @response.save

@@ -1,14 +1,11 @@
 <% if @user != current_user %>
 <div class="slideshow">
-  <div class="large-8 large-centered column">
-    <ul class="example-orbit" data-orbit>
+  <ul>
     <% @photos.each do |photo| %>
-      <li><%= image_tag photo.photo.url %>
-        <div class="orbit-caption"><%= photo.description %></div>
+      <li><%= image_tag photo.photo.url, style: "height: 200px; width: 200px;" %>
       </li>
     <% end %>
-    </ul>
-  </div>
+  </ul>
 </div>
 <% end %>
 
@@ -16,7 +13,7 @@
   <ol>
     <% @photos.each do |photo| %>
       <li id="photo-review"><%= image_tag photo.photo.url, :size => "300x300" %>
-        <%= link_to "Delete", user_photo_path(@user, photo), method: :delete, data: {confirm: 'Are you sure you want to delete photo?'}, class: "button tiny delete" %>
+        <%= link_to "Delete", user_photo_path(@user, photo), method: :delete, data: {confirm: 'Are you sure you want to delete photo?'}, class: "button tiny alert" %>
         <% if photo.profile_photo == false %>
           <%= link_to "Make Profile Picture", edit_user_photo_path(@user, photo), class: "button tiny edit" %></li>
         <% end %>

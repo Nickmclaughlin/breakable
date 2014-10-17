@@ -4,7 +4,7 @@
     <div class="large-3 columns">
       <% @user.photos.each do |photo| %>
         <% if photo.profile_photo == true %>
-          <%= image_tag photo.photo.url %><br>
+          <%= image_tag photo.photo.url, style: "height: 300px; width: 800px;" %><br>
         <% end %>
       <% end %>
     </div>
@@ -183,5 +183,5 @@
     <% end %>
     </div>
   </div>
-  <%= link_to "Delete Profile", user_path(@user), class: "button tiny alert", method: :delete, data: {confirm: 'Are you sure you want to delete comment?'} %>
+  <%= link_to "Delete Profile", user_path(@user), class: "button tiny alert", method: :delete, data: {confirm: 'Are you sure you want to delete comment?'}, style: "margin-left: 600px" %>
 </div>
