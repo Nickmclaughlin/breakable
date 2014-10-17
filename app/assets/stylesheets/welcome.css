@@ -1,14 +1,16 @@
 body {
-  background: url("http://wallsev.com/wp-content/uploads/2014/01/simple-grey-wallpaper-8113.jpg");
-  background-size: cover;
+/*   background: url("http://wallsev.com/wp-content/uploads/2014/01/simple-grey-wallpaper-8113.jpg");
+ */  background-size: cover;
+  background-color: #27637a;
 }
 
 .find-a-match {
 /*   background-image: url(http://p1.pichost.me/640/44/1675943.jpg);
  */  background-size: cover;
   height: 650px;
-
+  background-color: #27637a;
 }
+
 .find-a-match h1 {
   text-align: center;
   font-size: 40px;
@@ -36,4 +38,39 @@ body {
 
 .matched-users h1 {
   color: white;
+}
+
+.welcome {
+  font-size: 40px;
+  text-align: center;
+  position: relative;
+  top: 20%;
+  background-color: white;
+  opacity: .5;
+  height: 200px;
+  width: 400px ;
+  margin-left: 700px;
+}
+
+.sign-up {
+  position: relative;
+  top: 33%;
+}
+
+.today {
+  margin-bottom: 30px;
+}
+
+.user-session {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  top: 33%;
+  font-family: Verdana;
+  height: 400px;
+}
+
+.user-registration h2 {
+  text-align: center;
 }

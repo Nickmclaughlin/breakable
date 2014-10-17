@@ -5,9 +5,4 @@ module AuthenticationHelper
     fill_in 'Password', with: user.password
     click_on 'Log in'
   end
-
-  # def sign_out(user)
-  #   visit root_path
-  #   click_on 'Logout'
-  # end
 end

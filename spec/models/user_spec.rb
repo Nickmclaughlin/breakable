@@ -12,5 +12,9 @@ describe User do
     it { should have_many(:received_posts) }
     it { should have_many(:sent_posts) }
     it { should have_many(:photos) }
+    it { should have_many(:received_responses) }
+    it { should have_many(:sent_responses) }
+    it { should have_many(:received_nudges) }
+    it { should have_many(:sent_nudges) }
   end
 end

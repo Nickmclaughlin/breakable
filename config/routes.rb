@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     end
     resources :photos
     post 'nudge', to: "users#nudge"
+    delete 'nudge_delete', to: "users#nudge_delete"
   end
 
   namespace :admin do

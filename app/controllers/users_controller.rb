@@ -9,13 +9,7 @@ class UsersController < ApplicationController
     @post = Post.new
     @posts = @user.received_posts.page params[:page]
     @photos = @user.photos
-    @photos.each do |photo|
-      profile_photo = []
-      if photo.profile_photo == true
-        profile_photo << photo.photo.url
-      end
-      @profile_photo = profile_photo.pop
-    end
+    @profile_photo = @user.prof_photo(@photos)
     @response = Response.new
   end
 
@@ -67,6 +61,13 @@ class UsersController < ApplicationController
       flash[:warning] = "Already Nudged"
       redirect_to user_path(@user)
     end
+  end
+
+  def nudge_delete
+    @nudge = Nudge.find_by(recipient_id: params[:user_id])
+    @nudge.destroy
+
+    redirect_to user_path(current_user)
   end
 
   private

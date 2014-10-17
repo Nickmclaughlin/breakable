@@ -6,6 +6,7 @@ feature "Admin can edit delete a user" do
 
   scenario "admin can click can go to update page for user" do
     user = FactoryGirl.create(:user)
+
     sign_in_as(admin)
     visit admin_users_path
 

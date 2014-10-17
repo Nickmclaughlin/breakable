@@ -2,7 +2,7 @@
   <div class="large-3 columns" style="padding: 5px;">
     <h3 class="screenname"><%= @user.username %></h3>
       <% if @profile_photo != nil %>
-        <%= image_tag @profile_photo, style:"height: 200px; width: 200px;" %>
+        <%= image_tag @profile_photo, style:"height: 250px; width: 200px;" %>
       <% else %>
         <%= image_tag 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSZtW3Ymm4eva-4-lPOkW5tNTN6mUM4qYZNckFWaN11PUQ1Hm1O', style:"height: 200px; width: 200px;"  %>
       <% end %>
@@ -16,7 +16,7 @@
 
     <div class="activity">Active Last: <%= @user.last_sign_in_at.to_date %></div>
 
-      <% if current_user.sent_nudges.empty?%>
+      <% if current_user.sent_nudges.empty? && current_user != @user%>
         <div><%= link_to "Nudge", user_nudge_path(@user), method: :post, class: "button tiny alert" %></div>
       <% end %>
 
@@ -38,10 +38,12 @@
 
     <% if current_user == @user %>
       <% if !@user.received_nudges.empty?%>
-        You have been nudged by
+        Nudged by:
+      <ul>
         <% @user.received_nudges.each do |nudge| %>
-          <%= link_to nudge.nudger.username, user_path(nudge.nudger) %>
+          <li><%= link_to nudge.nudger.username, user_path(nudge.nudger) %> <%= link_to "Delete Nudge", user_nudge_delete_path(@user), method: :delete, data: {confirm: 'Are you sure you want to delete this nudge?'}, class: "button tiny alert" %></li>
         <% end %>
+      </ul>
       <% end %>
     <% end %>
 
@@ -82,7 +84,7 @@
 
 <div class="row">
   <div class="large 5 -columns large-centered columns">
-    <% if @user.sex != current_user.sex %>
+    <% if @user.sex == "Male" && current_user.sex == "Female" %>
     <h4>Post on <%= @user.username %>'s wall</h4>
     <%= form_for [@user, @post] do |f| %>
       <p class="message-title">
@@ -95,33 +97,34 @@
     <% end %>
     <% end %>
     <div class="posts">
-      <% if @user.sex != current_user.sex || @user == current_user || current_user.admin? %>
+
         <% @posts.each do |post| %>
+        <% if @user == current_user || current_user.admin? || post.poster = current_user %>
           <% post.poster.photos.each do |photo| %>
             <% if photo.profile_photo == true %>
-              <% if post.poster || post.recipent || current_user.admin? %>
-                <div><%= image_tag photo.photo.url, style:"height: 30px; width: 30px;"%> <%= post.message %> posted by: <%= link_to post.poster.username, user_path(post.poster) %>
-                  <%= link_to "Delete", user_post_path(post.poster, post), style:"float: right;", class: "button tiny alert", method: :delete, data: {confirm: 'Are you sure you want to delete this comment?'} %>
+              <% if post.poster || post.recipent %>
+                <div class="post"><%= image_tag photo.photo.url, style:"height: 30px; width: 30px;"%> <%= post.message %> posted by: <%= link_to post.poster.username, user_path(post.poster) %>
+                    <%= link_to "Delete", user_post_path(post.poster, post), style:"float: right;", class: "button tiny alert", method: :delete, data: {confirm: 'Are you sure you want to delete this comment?'} %>
                 </div>
+                <div class="responses">
                 <% post.responses.each do |response| %>
-                  <div style="margin-left: 50px;"><%= response.body%> sent by <%= link_to response.poster.username, user_path(response.poster) %></div>
+                  <div class="response"><%= response.body%> sent by <%= link_to response.poster.username, user_path(response.poster) %></div>
                 <% end %>
+                </div>
+                <div>
                 <div style="margin-left: 100px;"><%= form_for [@user, post, @response] do |f| %>
                   <p>
                     <%= f.text_area :body, style: "width: 300px;" %>
                   </p>
-
-                  <%= f.submit 'Post response', class: "button" %>
-
+                    <%= f.submit 'Post response', class: "button" %>
+                  <% end %></div>
                 <% end %>
-              </div>
               <% end %>
             <% end %>
           <% end %>
         <% end %>
-      <% end %>
     </div>
   </div>
   <%= paginate @posts %>
-  <br>
+
 </div>
