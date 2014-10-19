@@ -1,14 +1,13 @@
 body {
-/*   background: url("http://wallsev.com/wp-content/uploads/2014/01/simple-grey-wallpaper-8113.jpg");
- */  background-size: cover;
-  background-color: #27637a;
+  background-size: cover;
+  background-color: white;
+  /* background-image: url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRLW-bfuWH_e6WVdM0j6Y1w0wWUVlAxmuYTGD57-OHyoh15OdQ91A5KFFW5); */
 }
 
 .find-a-match {
-/*   background-image: url(http://p1.pichost.me/640/44/1675943.jpg);
- */  background-size: cover;
-  height: 650px;
-  background-color: #27637a;
+  background-image: url(http://123greetingsquotes.com/wp-content/uploads/2014/04/luv.jpg);
+  background-size: cover;
+  height: 675px;
 }
 
 .find-a-match h1 {
@@ -21,19 +20,11 @@ body {
 }
 
 .find-a-match h1 a {
-  color: white;
+  color: black;
 }
 
 .find-a-match h1 a:hover {
   color: #FF6600;
-}
-
-.header h1 {
-  color: white;
-}
-
-.header h5 {
-  color: white;
 }
 
 .matched-users h1 {
@@ -44,21 +35,30 @@ body {
   font-size: 40px;
   text-align: center;
   position: relative;
-  top: 20%;
-  background-color: white;
-  opacity: .5;
-  height: 200px;
+  color: black;
+  top: 16%;
+  background-color: black;
+  opacity: .6;
+  height: 310px;
   width: 400px ;
-  margin-left: 700px;
+  margin-left: 5%;
+  border-radius: 75px;
 }
 
 .sign-up {
   position: relative;
   top: 33%;
+  margin-left: 27%;
 }
 
 .today {
   margin-bottom: 30px;
+}
+
+.join {
+  color: orange;
+  position: relative;
+  top: 20%;
 }
 
 .user-session {
@@ -73,4 +73,76 @@ body {
 
 .user-registration h2 {
   text-align: center;
+}
+
+.animate   {
+	transition: all 0.1s;
+	-webkit-transition: all 0.1s;
+}
+
+.action-button {
+	position: relative;
+	padding: 10px 40px;
+  margin: 0px 10px 10px 0px;
+  width: 170px;
+	border-radius: 10px;
+	font-family: 'Pacifico', cursive;
+	font-size: 25px;
+	text-decoration: none;
+}
+
+.action-button a {
+  color: black;
+}
+
+.yellow {
+	background-color: #F2CF66;
+	border-bottom: 5px solid #D1B358;
+	text-shadow: 0px -2px #D1B358;
+}
+
+.action-button:active {
+	transform: translate(0px,5px);
+  -webkit-transform: translate(0px,5px);
+	border-bottom: 1px solid;
+}
+
+.second {
+  padding-top: 10px;
+  background-color: white;
+}
+.second h1 {
+  text-align: center;
+}
+
+.city h3 {
+  text-align:center;
+}
+
+.city img {
+  width: 400px;
+  height: 275px;
+}
+
+.city li {
+  list-style-type: none;
+  display: inline-block;
+}
+
+.footer {
+  height: 320px;
+  background-color: black;
+}
+
+.footer h2 {
+  font-size: 17px;
+  color: white;
+  text-align: center;
+  position: relative;
+  padding-top: 80px;
+  font-family: Fertigo;
+}
+
+.name {
+ font-family: Lato;
 }

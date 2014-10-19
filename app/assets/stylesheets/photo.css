@@ -1,5 +1,5 @@
 .user-photos {
-  padding-top: 10px
+  padding-top: 10px;
 }
 
 /* .description {
@@ -12,4 +12,8 @@
 
 .slide-show {
   height: 200px;
+}
+
+.prof-photo {
+  padding: 10px;
 }
