@@ -1,6 +1,6 @@
 <script src="preview_photo.js"></script>
 <div class="edit-user">
-  <div class="row">
+  <div class="panel row">
     <div class="large-3 columns">
       <% @user.photos.each do |photo| %>
         <% if photo.profile_photo == true %>
@@ -34,7 +34,7 @@
   </div>
 
   <div class="row">
-    <div class="large-12 columns">
+    <div class="panel large-12 columns">
       <% if @user.bio != nil %>
         <%= form_for @user do |f| %>
           <% if @user.errors.any? %>

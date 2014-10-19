@@ -4,25 +4,38 @@
   <% end %>
   <% if !current_user %>
     <div class="welcome">
-      <div class="sign-up"><div class="today"><%= link_to "Sign Up Today", new_user_registration_path %></div>
-      <%= link_to "Sign In", new_user_session_path %></div>
+      <div class="join">Join Eros Today!</div>
+      <div class="sign-up">
+        <div class="action-button shadow animate yellow"><%= link_to "Sign Up", new_user_registration_path %></div>
+        <div class="action-button shadow animate yellow"><%= link_to "Sign In", new_user_session_path %></div>
+      </div>
     </div>
   <% end %>
 </div>
-<div class="row">
-  <div class="large-12 columns find-a-match-text">
-  </div>
-</div>
-<div class="row">
-  <div class ="large-6 columns">
-    <h1>Why Eros?</h1>
-    <ul>
-      <li>Proven track record of success</li>
-      <li>Search for match via intrests</li>
-      <li>Vetting process not SEEN in industry before</li>
+<% if !current_user %>
+  <div class="second">
+    <h1>Find A Match In Your City Today</h1>
+    <ul class="city large-block-grid-3">
+      <li><img src="http://p1.pichost.me/640/52/1755024.jpg"><h3>New York</h3></li>
+      <li><img src="http://dormroomfund.com/img/slider-images/boston.jpg"><h3>Boston</h3></li>
+      <li><img src="http://static.squarespace.com/static/52f88b17e4b087ee0886e311/t/5301aecee4b01cb1fb2fb14a/1392619216807/SF%20Couple%20Golden%20Gate.jpg?format=1500w"><h3>San Francisco</h3></li>
+      <li><img src="http://bridalbanter.wpengine.netdna-cdn.com/weddings/wp-content/uploads/2010/09/Unique-Chicago-Locations-for-Engagement-Photos_blog.jpg"><h3>Chicago</h3></li>
+      <li><img src="http://3.bp.blogspot.com/-xsNBun_WfDM/TZFhcGhJo7I/AAAAAAAABGA/ygRIv8h1Vk8/s1600/Santa+Monica+-+Couple+Sitting+on+Boardwalk.jpg"><h3>Los Angeles</h3></li>
+      <li><img src="http://www.kristarossow.com/data/photos/15_1p10_travel_places_washington_dc_cherry_blossoms.jpg"><h3>Washington D.C.</h3></li>
     </ul>
   </div>
-  <div class="large-6 columns couple-picture">
-    <img src="http://ak1.picdn.net/shutterstock/videos/3632810/preview/stock-footage-silhouetted-couple-holding-hands-on-the-beach-in-the-sunset.jpg">
+  <div>
+    <div class="footer">
+      <div>
+        <h2>
+          Created By: Nick McLaughlin<br>
+          Email: <a href="mailto:mclaughlin.nick@gmail.com">mclaughlin.nick@gmail.com</a><br>
+          Github: <a href="https://github.com/Nickmclaughlin">https://github.com/Nickmclaughlin</a><br>
+          LinkedIn: <a href="https://github.com/Nickmclaughlin">https://www.linkedin.com/in/nickmclaughlin5</a><br>
+          © Eros, Inc.<br><br>
+          <a href="https://twitter.com/ErosMatch" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @ErosMatch</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
+        </h2>
+      </div>
   </div>
-</div>
+<% end %>
