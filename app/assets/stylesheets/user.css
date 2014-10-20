@@ -10,14 +10,17 @@
   color: white;
 }
 .activity {
-  color: white;
+  color: black;
   font-size: 15px;
+  margin-left: 11%;
 }
 .photo-link {
   font-size: 25px;
+  margin-left: 13%;
 }
 
-.post {
+.info {
+  padding-left: 200px;
 
 }
 
@@ -32,16 +35,28 @@
   padding-top: 20px;
 }
 
-.upload-preview {
-  width: 200px;
-  height: 200px;
+.upload-preview img {
+
 }
 
 .search-users {
   text-align: center;
 }
+
 .search-bar {
   width: 500px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.searching {
+  padding-top: 100px;
+}
+
+.profile-page {
+  padding-top: 50px;
+}
+
+.nudge-button {
+  margin-left: 25%;
 }

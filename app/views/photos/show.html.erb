@@ -10,7 +10,7 @@
 <% end %>
 
 <% if @user == current_user %>
-  <ol>
+  <ul class="photo-list">
     <% @photos.each do |photo| %>
       <li id="photo-review"><%= image_tag photo.photo.url, :size => "300x300" %>
         <%= link_to "Delete", user_photo_path(@user, photo), method: :delete, data: {confirm: 'Are you sure you want to delete photo?'}, class: "button tiny alert" %>
@@ -22,6 +22,6 @@
         <% end %>
         <br>
     <% end %>
-  </ol>
+  </ul>
   <%= paginate @photos %>
 <% end %>

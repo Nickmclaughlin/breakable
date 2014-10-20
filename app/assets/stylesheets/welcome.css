@@ -1,7 +1,6 @@
 body {
   background-size: cover;
   background-color: white;
-  /* background-image: url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRLW-bfuWH_e6WVdM0j6Y1w0wWUVlAxmuYTGD57-OHyoh15OdQ91A5KFFW5); */
 }
 
 .find-a-match {
@@ -10,6 +9,9 @@ body {
   height: 675px;
 }
 
+.matched-users {
+  list-style: none;
+}
 .find-a-match h1 {
   text-align: center;
   font-size: 40px;
