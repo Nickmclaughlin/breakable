@@ -1,4 +1,4 @@
-<ul>
+<ul class="admin-list">
   <% @users.each do |user|%>
     <% if !user.admin? %>
     <li><%= link_to user.username, user_path(user) %>

@@ -35,7 +35,7 @@ feature "User can submit and delete photo" do
 
     expect(page).to have_content("You have successfully added a photo.")
 
-    click_on "Review Your Photos"
+    click_on "Review Photos"
 
     click_on "Make Profile Picture"
 
@@ -54,7 +54,7 @@ feature "User can submit and delete photo" do
     click_on "Submit Photo"
     expect(page).to have_content("You have successfully added a photo.")
 
-    click_on "Review Your Photos"
+    click_on "Review Photos"
 
     click_on "Delete"
 

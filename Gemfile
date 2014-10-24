@@ -50,7 +50,7 @@ group :test do
 end
 
 group :development, :test do
-  gem 'rack-mini-profiler'
+  # gem 'rack-mini-profiler'
   gem 'valid_attribute'
   gem 'shoulda-matchers'
   gem 'pry-rails'

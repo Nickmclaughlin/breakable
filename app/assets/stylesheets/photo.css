@@ -17,3 +17,13 @@
 .prof-photo {
   padding: 10px;
 }
+
+.photo-list {
+  list-style: none;
+  padding-top: 20px;
+  margin-left: 10px;
+}
+
+.admin-list {
+  list-style: none;
+}
