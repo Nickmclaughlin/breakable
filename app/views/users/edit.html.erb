@@ -128,14 +128,14 @@
       <% @user.photos.each do |photo| %>
         <% if photo.profile_photo == true %>
           <%= image_tag photo.photo.url %><br>
-        <% end %>
+        <% end%>
       <% end %>
     </div>
     <div class="large-9 columns">
       <h1>Welcome to the Eros Community <%= @user.first_name %> <%= @user.last_name %>.</h1>
       <p> Please start filling out your profile.  Remember this is an important step to making a connection so be thorough.</p><br>
           <%= form_for [@user, @photo] do |f| %>
-            
+
             <div class="upload-preview">
               <img />
             </div>

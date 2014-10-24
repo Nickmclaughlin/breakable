@@ -60,3 +60,7 @@
 .nudge-button {
   margin-left: 25%;
 }
+
+.nudge-list {
+  list-style: none;
+}
