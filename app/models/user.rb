@@ -1,4 +1,4 @@
- vclass User < ActiveRecord::Base
+class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -62,5 +62,4 @@
       "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSZtW3Ymm4eva-4-lPOkW5tNTN6mUM4qYZNckFWaN11PUQ1Hm1O"
     end
   end
-
 end
